@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh 'docker build -t frontend-redes-sociales .'
+            }
+        }
+        stage('Test'){
+            steps{
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+                // Detener y eliminar el contenedor anterior si existe
+                sh 'docker stop my-frontend-redes || true'
+                sh 'docker rm my-frontend-redes || true'
+
+                sh 'docker run -d --restart=always --name my-frontend-redes -p 5175:80 frontend-redes-sociales'
+            }
+        }
+    }
+}

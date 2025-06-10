@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Construir') {
+            steps {
+                // Construir la imagen Docker desde Dockerfile.dev
+                sh 'docker build -f Dockerfile.dev -t backend-redes-app-dev .'
+            }
+        }
+
+        stage('Desplegar') {
+            steps {
+                // Detener y eliminar el contenedor anterior si existe
+                sh 'docker stop my-backend-app-dev || true'
+                sh 'docker rm my-backend-app-dev || true'
+
+                // Desplegar la aplicación en la máquina Docker con un nombre específico
+                sh 'docker run -d --restart=always --name my-backend-app-dev -p 8002:8000 backend-redes-app-dev'
+            }
+        }
+    }
+}
