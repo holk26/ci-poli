@@ -576,7 +576,7 @@ ALLOWED_HOSTS=yourdomain.com,www.yourdomain.com
 
 ---
 
-**Elaborado por:** [Nombre del Estudiante]  
+**Elaborado por:** Homero Cabrera - William Stiven Gutierrez 
 **Programa:** Ingeniería de Software  
 **Universidad:** Politécnico Grancolombiano  
 **Fecha:** Junio 2025  
