@@ -100,12 +100,19 @@ TEMPLATES = [
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
-DATABASES = {
-    "default": env.db(),
-}
-
-# database_url: str = "postgresql://admin:BzsDWRk8DDBjHprCQT0i@192.168.2.107:5432/aztecaSocial"
+# Configuración de base de datos con fallback a SQLite por defecto
+try:
+    DATABASES = {
+        "default": env.db(),
+    }
+except:
+    # Base de datos por defecto si no hay variables de entorno
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

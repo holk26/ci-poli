@@ -5,7 +5,6 @@ FROM python:3.11.5
 WORKDIR /app
 
 # Definir las variables de entorno para la base de datos
-ENV DATABASE_URL=postgres://admin:BzsDWRk8DDBjHprCQT0i@10.0.0.90:5432/aztecaSocial
 
 # Instalar herramientas de desarrollo y limpiar la caché de apt
 RUN apt-get update && apt-get install -y \
