@@ -25,13 +25,11 @@ pipeline {
                 stage('Test Backend') {
                     steps {
                         echo 'Testing Backend...'
-                        // Aquí puedes agregar tus pruebas del backend
                     }
                 }
                 stage('Test Frontend') {
                     steps {
                         echo 'Testing Frontend...'
-                        // Aquí puedes agregar tus pruebas del frontend
                     }
                 }
             }
